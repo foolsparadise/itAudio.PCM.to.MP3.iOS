@@ -1,5 +1,5 @@
 # audioPCMtoMP3
-### useage:
+### usage:
 ```
 -(NSString *)audioPCMtoMP3:(NSString *)wavPath toFile:(NSString *)mp3Path
 {
