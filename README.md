@@ -2,6 +2,7 @@
 iOS 录音后的音频文件，转码，转成mp3格式，pcm->mp3, wav->mp3,使用以下方法
 ### usage:
 ```
+#import "lame.h"
 -(NSString *)audioPCMtoMP3:(NSString *)wavPath toFile:(NSString *)mp3Path
 {
     
