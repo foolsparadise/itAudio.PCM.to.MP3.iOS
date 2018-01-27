@@ -5,9 +5,15 @@ iOS 录音后的音频文件，转码，转成mp3格式，pcm->mp3, wav->mp3,使
 #import "lame.h"
 -(NSString *)audioPCMtoMP3:(NSString *)wavPath toFile:(NSString *)mp3Path
 {
-    // wavPath 被转换的音频文件位置
-    // mp3Path 输出生成的Mp3文件位置
+    // wavPath 被转换的音频文件位置，比如这样：/var/mobile/Containers/Data/Application/AA6D7D77-089E-4F93-84CF-4E944EA94298/Library/Caches/a.wav
+    // mp3Path 输出生成的Mp3文件位置，比如这样：/var/mobile/Containers/Data/Application/AA6D7D77-089E-4F93-84CF-4E944EA94298/Library/Caches/b.mp3
     // 另外要注意，码率的设置
+    /*
+    NSArray *paths1 = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    [paths1 objectAtIndex:0]
+    NSArray *paths2 = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    [paths2 objectAtIndex:0]
+    */
     @try {
         int read, write;
         
