@@ -5,13 +5,15 @@ iOS 录音后的音频文件，转码，转成mp3格式，pcm->mp3, wav->mp3,使
 #import "lame.h"
 -(NSString *)audioPCMtoMP3:(NSString *)wavPath toFile:(NSString *)mp3Path
 {
-    
+    // wavPath 被转换的音频文件位置
+    // mp3Path 输出生成的Mp3文件位置
+    // 另外要注意，码率的设置
     @try {
         int read, write;
         
-        FILE *pcm = fopen(wavPath.UTF8String, "rb");  //source 被转换的音频文件位置
+        FILE *pcm = fopen(wavPath.UTF8String, "rb");
         fseek(pcm, 4*1024, SEEK_CUR); //skip file header
-        FILE *mp3 = fopen(mp3Path.UTF8String, "wb"); //output 输出生成的Mp3文件位置
+        FILE *mp3 = fopen(mp3Path.UTF8String, "wb");
         
         const int PCM_SIZE = 8192;
         const int MP3_SIZE = 8192;
@@ -19,7 +21,7 @@ iOS 录音后的音频文件，转码，转成mp3格式，pcm->mp3, wav->mp3,使
         unsigned char mp3_buffer[MP3_SIZE];
         
         lame_t lame = lame_init();
-        lame_set_in_samplerate(lame, 11025.0);
+        lame_set_in_samplerate(lame, 44100.0); //注意这里的码率设置，要与wavPath文件的码率保持一致
         lame_set_VBR(lame, vbr_default);
         lame_init_params(lame);
         
